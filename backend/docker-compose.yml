@@ -1,0 +1,14 @@
+services:
+  backend:
+    build: .
+    container_name: flask_backend
+    ports:
+      - "5000:5000"
+    # .env 파일을 읽어서 환경변수로 주입
+    env_file:
+      - .env
+    # 로컬 개발 환경을 위해 호스트의 현재 폴더를 컨테이너의 /app에 마운트
+    volumes:
+      - ./:/app
+    # 컨테이너가 죽으면 자동 재시작
+    restart: always
